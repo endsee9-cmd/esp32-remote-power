@@ -1,0 +1,23 @@
+menu "Power MQTT"
+
+    config POWER_MQTT_URI
+        string "Broker URI (mqtts://hostname:port)"
+        default ""
+
+    config POWER_MQTT_USERNAME
+        string "MQTT device username"
+        default ""
+
+    config POWER_MQTT_PASSWORD
+        string "MQTT device password"
+        default ""
+
+    config POWER_MQTT_TOPIC_BASE
+        string "Topic prefix (no trailing slash)"
+        default ""
+
+    config POWER_MQTT_SNTP_SERVER
+        string "SNTP server hostname"
+        default "pool.ntp.org"
+
+endmenu

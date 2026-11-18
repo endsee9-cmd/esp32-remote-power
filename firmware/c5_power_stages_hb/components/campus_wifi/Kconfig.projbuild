@@ -1,0 +1,34 @@
+menu "Campus Wi-Fi"
+
+    config CAMPUS_WIFI_OPEN
+        bool "Connect to an open access point"
+        default n
+
+    config CAMPUS_WIFI_SSID
+        string "Wi-Fi SSID"
+        default "YourCampusWiFi-5G"
+
+    config CAMPUS_WIFI_USERNAME
+        string "Campus Wi-Fi username"
+        default ""
+
+    config CAMPUS_WIFI_PASSWORD
+        string "Campus Wi-Fi password"
+        default ""
+
+    config CAMPUS_WIFI_OUTER_IDENTITY
+        string "PEAP outer identity (optional)"
+        default ""
+        help
+            Leave empty to use the campus username unless the network operator
+            provides a separate outer identity.
+
+    config CAMPUS_WIFI_RADIUS_DOMAIN
+        string "RADIUS server certificate domain"
+        default ""
+        help
+            Use the certificate hostname or domain supplied by the network operator.
+            A custom CA in components/campus_wifi/campus_ca.pem takes precedence over the ESP-IDF
+            public CA bundle. Connection is disabled when this field is empty.
+
+endmenu

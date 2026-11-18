@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
+  <rect width="192" height="192" fill="#101418"/>
+  <!-- maskable 图标:图形缩至中心 80% 安全区内 -->
+  <g fill="none" stroke="#37d67a" stroke-width="12" stroke-linecap="round" transform="translate(28.8,28.8) scale(0.7)">
+    <path d="M96 28v56"/>
+    <path d="M70 55a52 52 0 1 0 52 0"/>
+  </g>
+</svg>

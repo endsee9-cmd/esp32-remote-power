@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#101418">
+  <meta name="description" content="通过 MQTT 远程短按电脑电源键(ESP32-C5 舵机)">
+  <title>远程电源键</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icon.svg">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>远程电源键</h1>
+    <span id="connState" class="badge off">未连接</span>
+  </header>
+
+  <main>
+    <!-- 连接设置:可折叠,配置保存在 localStorage -->
+    <details id="settings" class="panel">
+      <summary>连接设置</summary>
+      <div class="form">
+        <label>Broker 地址(MQTT over WebSocket)
+          <input id="inBroker" placeholder="wss://broker.emqx.io:8084/mqtt" autocapitalize="off" autocomplete="off" spellcheck="false" inputmode="url">
+        </label>
+        <label>用户名
+          <input id="inUser" placeholder="可选" autocapitalize="off" autocomplete="off" spellcheck="false">
+        </label>
+        <label>密码
+          <input id="inPass" type="password" placeholder="可选" autocomplete="off">
+        </label>
+        <label>主题前缀(与设备 menuconfig 中一致)
+          <input id="inPrefix" placeholder="my-room/pc-power" autocapitalize="off" autocomplete="off" spellcheck="false">
+        </label>
+        <div class="row">
+          <button id="btnConnect" class="ghost">连接</button>
+          <button id="btnDisconnect" class="ghost" disabled>断开</button>
+        </div>
+        <p class="hint">配置仅保存在本机浏览器 localStorage;手机页通过 WSS 直连 Broker,凭据不经第三方页面转发。</p>
+      </div>
+    </details>
+
+    <!-- 主操作区 -->
+    <section class="pad">
+      <p id="statusLine" class="status idle">未连接 Broker</p>
+      <button id="btnPress" class="power" disabled aria-label="短按电源键">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 2.6v8.2" />
+          <path d="M7.2 5.4a7.4 7.4 0 1 0 9.6 0" />
+        </svg>
+        <span>短按电源键</span>
+      </button>
+      <p id="btnNote" class="note" hidden></p>
+      <p class="warn">注意:电脑已开机时再按,会触发睡眠 / 关机。本页超时后绝不自动重发,请勿短时间连续按压。</p>
+    </section>
+
+    <!-- 事件日志 -->
+    <details class="panel" open>
+      <summary>事件日志</summary>
+      <div id="log" class="log" aria-live="polite"></div>
+      <button id="btnClear" class="ghost small">清空日志</button>
+    </details>
+  </main>
+
+  <script src="vendor/mqtt.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

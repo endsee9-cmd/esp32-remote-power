@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.16)
+set(SUPPORTED_TARGETS esp32c5)
+set(COMPONENTS main)
+set(EXTRA_COMPONENT_DIRS "../components/campus_wifi" "../components/power_mqtt" "../components/sg90")
+include($ENV{IDF_PATH}/tools/cmake/project.cmake)
+project(c5_remote_power)

@@ -1,0 +1,181 @@
+/* 远程电源键 —— 移动端优先,默认深色,跟随系统可切浅色 */
+:root {
+  color-scheme: dark light;
+  --bg: #101418;
+  --panel: #1a2027;
+  --panel-2: #222a33;
+  --text: #e8edf2;
+  --text-dim: #9aa7b4;
+  --line: #2e3843;
+  --ok: #37d67a;
+  --bad: #ff5d5d;
+  --warn: #ffb454;
+  --wait: #4da3ff;
+  --accent: #37d67a;
+}
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #f2f4f7;
+    --panel: #ffffff;
+    --panel-2: #eef1f5;
+    --text: #1c2530;
+    --text-dim: #5d6b7a;
+    --line: #d8dfe7;
+  }
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-tap-highlight-color: transparent;
+}
+main {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 0 14px calc(24px + env(safe-area-inset-bottom));
+}
+header {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: calc(12px + env(safe-area-inset-top)) 14px 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+h1 { font-size: 20px; margin: 0; font-weight: 700; }
+
+/* 连接状态徽标 */
+.badge {
+  font-size: 13px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  color: var(--text-dim);
+  background: var(--panel);
+  white-space: nowrap;
+}
+.badge.ok   { color: var(--ok);   border-color: var(--ok); }
+.badge.warn { color: var(--warn); border-color: var(--warn); }
+.badge.err  { color: var(--bad);  border-color: var(--bad); }
+
+/* 折叠面板 */
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  margin-top: 14px;
+  overflow: hidden;
+}
+.panel summary {
+  padding: 12px 14px;
+  font-weight: 600;
+  cursor: pointer;
+  user-select: none;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.panel summary::-webkit-details-marker { display: none; }
+.panel summary::after { content: "▸"; margin-left: auto; transition: transform .15s; color: var(--text-dim); }
+.panel[open] summary::after { transform: rotate(90deg); }
+.panel .form { padding: 2px 14px 14px; }
+
+/* 表单 */
+.form label { display: block; margin-top: 10px; font-size: 13px; color: var(--text-dim); }
+.form input {
+  width: 100%;
+  margin-top: 4px;
+  padding: 11px 12px;
+  font-size: 16px;
+  color: var(--text);
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  outline: none;
+}
+.form input:focus { border-color: var(--accent); }
+.row { display: flex; gap: 10px; margin-top: 14px; }
+.hint { font-size: 12px; color: var(--text-dim); margin: 10px 0 0; }
+
+/* 按钮 */
+button { font: inherit; cursor: pointer; }
+button:disabled { opacity: .45; cursor: default; }
+.ghost {
+  flex: 1;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: var(--panel-2);
+  color: var(--text);
+}
+.ghost.primary { border-color: var(--accent); color: var(--accent); }
+.ghost.small { flex: none; width: auto; font-size: 13px; padding: 6px 12px; margin-top: 10px; }
+
+/* 主操作区 */
+.pad { text-align: center; margin-top: 8px; }
+.status {
+  margin: 14px 0 10px;
+  font-size: 17px;
+  font-weight: 600;
+  min-height: 1.5em;
+  word-break: break-all;
+}
+.status.idle { color: var(--text-dim); }
+.status.wait { color: var(--wait); }
+.status.ok   { color: var(--ok); }
+.status.bad  { color: var(--bad); }
+.status.warn { color: var(--warn); }
+
+/* 大圆形电源按钮 */
+.power {
+  width: min(72vw, 250px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 3px solid var(--accent);
+  background: radial-gradient(circle at 50% 35%, var(--panel-2), var(--panel) 70%);
+  color: var(--accent);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin: 6px auto 4px;
+  touch-action: manipulation;
+  transition: transform .08s ease, opacity .15s;
+}
+.power:active { transform: scale(.96); }
+.power:disabled { border-color: var(--line); color: var(--text-dim); opacity: .55; }
+.power svg { width: 84px; height: 84px; fill: none; stroke: currentColor; stroke-width: 2; }
+.power span { font-size: 18px; font-weight: 700; letter-spacing: 2px; }
+.note { font-size: 13px; color: var(--warn); margin: 8px 0 0; }
+
+.warn {
+  font-size: 13px;
+  color: var(--text-dim);
+  background: var(--panel);
+  border: 1px dashed var(--line);
+  border-radius: 10px;
+  padding: 10px 12px;
+  text-align: left;
+  margin: 16px 0 0;
+}
+
+/* 日志 */
+.log {
+  padding: 4px 14px 8px;
+  max-height: 300px;
+  overflow-y: auto;
+  font-family: ui-monospace, Menlo, Consolas, monospace;
+  font-size: 12.5px;
+  word-break: break-all;
+}
+.log .entry { padding: 3px 0; border-bottom: 1px solid var(--line); color: var(--text-dim); }
+.log .entry.ok   { color: var(--ok); }
+.log .entry.bad  { color: var(--bad); }
+.log .entry.warn { color: var(--warn); }

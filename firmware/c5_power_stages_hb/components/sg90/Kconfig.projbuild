@@ -1,0 +1,18 @@
+menu "SG90 Servo"
+
+    config SG90_GPIO
+        int "PWM signal GPIO (-1 = unset)"
+        range -1 28
+        default -1
+
+    config SG90_IDLE_US
+        int "Released position pulse (microseconds)"
+        range 900 2100
+        default 1500
+
+    config SG90_PRESS_US
+        int "Pressed position pulse (microseconds, 0 = unset)"
+        range 0 2100
+        default 0
+
+endmenu

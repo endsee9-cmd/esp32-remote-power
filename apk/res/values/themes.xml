@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  深蓝主题:直接用 framework 的 android:Theme.Material.*(禁 AndroidX)。
+  minSdk 24 ≥ 21,statusBarColor 无需 values-v23 分包。
+-->
+<resources>
+    <style name="PcPowerTheme" parent="android:Theme.Material.NoActionBar">
+        <item name="android:colorPrimary">@color/accent</item>
+        <item name="android:colorPrimaryDark">@color/background</item>
+        <item name="android:colorAccent">@color/accent</item>
+        <item name="android:windowBackground">@color/background</item>
+        <item name="android:statusBarColor">@color/background</item>
+        <item name="android:navigationBarColor">@color/background</item>
+        <item name="android:textColorPrimary">@color/text_primary</item>
+        <item name="android:textColorSecondary">@color/text_secondary</item>
+        <item name="android:textColorHint">@color/text_secondary</item>
+    </style>
+
+    <!-- 按钮基础样式(背景由各 drawable 决定) -->
+    <style name="PcPowerButton">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/text_on_accent</item>
+        <item name="android:minHeight">50dp</item>
+        <item name="android:paddingLeft">20dp</item>
+        <item name="android:paddingRight">20dp</item>
+    </style>
+
+    <style name="PrimaryButton" parent="PcPowerButton">
+        <item name="android:background">@drawable/bg_btn_primary</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="SecondaryButton" parent="PcPowerButton">
+        <item name="android:background">@drawable/bg_btn_secondary</item>
+    </style>
+</resources>

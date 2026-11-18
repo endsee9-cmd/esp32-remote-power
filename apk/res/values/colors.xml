@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  配色:取自用户提供的「渐变蓝色远程唤醒显示器」图标
+  (深蓝 → 亮蓝渐变显示器 + 电源 + 无线弧线),全深色高对比方案。
+-->
+<resources>
+    <!-- 深蓝底色与面板 -->
+    <color name="background">#0B1F3A</color>        <!-- 页面背景(图标深蓝) -->
+    <color name="surface">#132B52</color>           <!-- 卡片面板 -->
+    <color name="surface_deep">#0E2340</color>      <!-- 日志等更深面板 -->
+    <color name="divider">#24406B</color>
+
+    <!-- 亮蓝强调(图标亮蓝)与青色点缀 -->
+    <color name="accent">#1E88FF</color>
+    <color name="accent_cyan">#35D6FF</color>
+    <color name="btn_disabled">#24466F</color>
+    <color name="btn_pressed_primary">#3D9BFF</color>      <!-- 主按钮按下态(比 accent 亮) -->
+    <color name="btn_pressed_secondary">#33507F</color>    <!-- 次按钮按下态(比 divider 亮) -->
+
+    <!-- 高对比文字 -->
+    <color name="text_primary">#F2F7FF</color>
+    <color name="text_secondary">#9FB4D6</color>
+    <color name="text_on_accent">#FFFFFF</color>
+
+    <!-- 状态色 -->
+    <color name="status_ok">#43D97B</color>
+    <color name="status_wait">#35A9FF</color>
+    <color name="status_warn">#FFB54D</color>
+    <color name="status_error">#FF6E6E</color>
+</resources>

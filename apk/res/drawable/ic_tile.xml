@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  24dp 白色透明矢量(与用户图标同构):显示器轮廓 + 屏内电源符号 + 右上无线弧线。
+  用途:控制中心磁贴图标 + 自适应图标 monochrome 层(系统会重新着色)。
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+
+    <!-- 显示器轮廓:顶部右侧留缺口,无线弧线从缺口发出;右侧边到 y=7 截止 -->
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="1.7"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:fillColor="#00000000"
+        android:pathData="M16.4,5 L5,5 A2,2 0 0 0 3,7 L3,14 A2,2 0 0 0 5,16 L19,16 A2,2 0 0 0 21,14 L21,7" />
+
+    <!-- 支架与底座 -->
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="1.7"
+        android:strokeLineCap="round"
+        android:fillColor="#00000000"
+        android:pathData="M12,16 L12,19 M8.6,19.6 L15.4,19.6" />
+
+    <!-- 电源符号:270° 圆弧 + 竖线 -->
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="1.9"
+        android:strokeLineCap="round"
+        android:fillColor="#00000000"
+        android:pathData="M10.07,8.3 A3,3 0 1 0 13.93,8.3 M12,5.6 L12,9.6" />
+
+    <!-- 无线弧线(两道) -->
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="1.7"
+        android:strokeLineCap="round"
+        android:fillColor="#00000000"
+        android:pathData="M16.6,6.2 A2.4,2.4 0 0 1 19,3.8 M14.2,6.2 A4.8,4.8 0 0 1 19,1.4" />
+</vector>
